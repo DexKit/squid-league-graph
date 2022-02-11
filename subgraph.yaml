@@ -1,4 +1,4 @@
-specVersion: 0.0.1
+specVersion: 0.0.2
 schema:
   file: ./schema.graphql
 dataSources:
@@ -6,7 +6,7 @@ dataSources:
     name: SquidGameFactory
     network: mumbai
     source:
-      address: "0x623436107c4EF18A99EC2cc8C6d703960489C130"
+      address: "0xaF8aa1952bbB2c4AbE14C027224B44d2f683f73B"
       abi: SquidGameFactory
     mapping:
       kind: ethereum/events
@@ -24,3 +24,39 @@ dataSources:
         - event: SquidCreated(address,uint256,uint256,uint256)
           handler: handleSquidCreated
       file: ./src/mapping.ts
+templates:
+  - name: SquidGame
+    kind: ethereum/contract
+    network: mumbai
+    source:
+      abi: SquidGame
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.5
+      language: wasm/assemblyscript
+      file: ./src/squidGame.ts
+      entities:
+        - Game
+        - Player
+      abis:
+        - name: SquidGame
+          file: ./abis/SquidGame.json
+      eventHandlers:
+        - event: PlayerJoined(address,uint256)
+          handler: handlePlayerJoinedGame
+        - event: PlayerJoinedRound(uint256,address,uint256,bool)
+          handler: handlePlayerJoinedRound
+        - event: ChallengeStarted(uint256,int256,uint256)
+          handler: handleChallengeStarted
+        - event: ChallengeFinished(uint256,int256,uint256,bool)
+          handler: handleChallengeFinished
+        - event: ChallengeSetup(uint256,address,uint256,uint256)
+          handler: handleChallengeSetup
+        - event: VoteToQuit(uint256,address,uint256)
+          handler: handleVoteToQuit
+        - event: GameQuitted(uint256,uint256,uint256,uint256)
+          handler: handleGameQuitted
+        - event: Withdrawed(uint256,address,uint256)
+          handler: handleWithdrawed
+        - event: WithdrawedHouse(uint256,uint256)
+          handler: handleWithdrawedHouse

@@ -1,6 +1,60 @@
-type ExampleEntity @entity {
+enum GameStatus {
+  Joining
+  Setup
+  Started
+  Finished
+  Quit
+}
+
+enum GameType {
+  Bull
+  Bear
+}
+
+type Game @entity {
   id: ID!
-  count: BigInt!
-  previousOwner: Bytes! # address
-  newOwner: Bytes! # address
+  intId: BigInt!
+  currentRound: BigInt!
+  createdAt: BigInt
+  startedAt: BigInt
+  startsAt: BigInt
+  pastRoundChallengeResult: Boolean
+  currentRoundTotalPlayers: BigInt!
+  currentRoundSetupAt: BigInt
+  currentRoundStartsAt: BigInt
+  currentRoundEndsAt: BigInt
+  currentRoundType: GameType
+  endedAt: BigInt
+  createdBy: Bytes!
+  status: GameStatus!
+  duration: BigInt!
+  entry: BigInt
+  players: [PlayerGame!] @derivedFrom(field: "game")
+  earning: [Earning!] @derivedFrom(field: "game")
+}
+
+type Player @entity {
+  id: ID!
+  playCurrentRound: Boolean
+  totalFinishedGames: BigInt!
+  totalJoinedGames: BigInt!
+  games: [PlayerGame!] @derivedFrom(field: "player")
+  totalEarned: BigInt!
+  totalSpent: BigInt!
+  EarnedMinusSpent: BigInt!
+}
+
+type Earning @entity {
+  id: ID!
+  player: Player!
+  amount: BigInt
+  claimed: Boolean!
+  at: BigInt
+  game: Game!
+}
+
+type PlayerGame @entity {
+  id: ID! # Set to `${game.id}-${player.id}`
+  player: Player!
+  game: Game!
 }
