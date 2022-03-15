@@ -6,7 +6,7 @@ dataSources:
     name: SquidGameFactory
     network: mumbai
     source:
-      address: "0xaF8aa1952bbB2c4AbE14C027224B44d2f683f73B"
+      address: "0xd2Fbe4192016a86fc294D6dD5119807454D56CfE"
       abi: SquidGameFactory
     mapping:
       kind: ethereum/events
