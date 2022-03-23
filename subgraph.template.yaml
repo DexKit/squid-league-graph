@@ -28,7 +28,7 @@ dataSources:
 templates:
   - name: SquidGame
     kind: ethereum/contract
-    network: mumbai
+    network: {{network}}
     source:
       abi: SquidGame
     mapping:

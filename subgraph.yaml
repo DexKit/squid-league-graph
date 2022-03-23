@@ -4,11 +4,11 @@ schema:
 dataSources:
   - kind: ethereum
     name: SquidGameFactory
-    network: mumbai
+    network: matic
     source:
-      address: "0x9D6c1cf05a124DB6eae58cFE08906dd216577466"
+      address: "0x518c8873b1E312641BB69dD6f9b3466fD99CD5E5"
       abi: SquidGameFactory
-      startBlock: 25531090
+      startBlock: 26277437
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.5
@@ -28,7 +28,7 @@ dataSources:
 templates:
   - name: SquidGame
     kind: ethereum/contract
-    network: mumbai
+    network: matic
     source:
       abi: SquidGame
     mapping:
