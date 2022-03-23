@@ -4,7 +4,10 @@
   "scripts": {
     "codegen": "graph codegen",
     "build": "graph build",
-    "deploy": "graph deploy --node https://api.thegraph.com/deploy/ JoaoCampos89/squidgame-mumbai",
+    "prepare:matic": "mustache config/matic.json subgraph.template.yaml > subgraph.yaml",
+    "prepare:mumbai": "mustache config/mumbai.json subgraph.template.yaml > subgraph.yaml",
+    "deploy:mumbai": "yarn prepare:mumbai && graph deploy --node https://api.thegraph.com/deploy/ JoaoCampos89/squidgame-mumbai",
+    "deploy:matic": "yarn prepare:matic && graph deploy --node https://api.thegraph.com/deploy/ JoaoCampos89/squidgame-matic",
     "create-local": "graph create --node http://localhost:8020/ JoaoCampos89/squidgame-mumbai",
     "remove-local": "graph remove --node http://localhost:8020/ JoaoCampos89/squidgame-mumbai",
     "deploy-local": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 JoaoCampos89/squidgame-mumbai"
