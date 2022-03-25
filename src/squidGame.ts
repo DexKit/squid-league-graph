@@ -97,9 +97,9 @@ export function handleChallengeFinished(event: ChallengeFinished): void {
   }
 }
 
-export function handleVoteToQuit(event: VoteToQuit): void {}
+export function handleVoteToQuit(event: VoteToQuit): void { }
 
-export function handleGameQuitted(event: GameQuitted): void {}
+export function handleGameQuitted(event: GameQuitted): void { }
 
 export function handleWithdrawed(event: Withdrawed): void {
   let game = Game.load(event.address.toHexString()) as Game;
@@ -112,4 +112,4 @@ export function handleWithdrawed(event: Withdrawed): void {
   earning.save();
 }
 
-export function handleWithdrawedHouse(event: WithdrawedHouse): void {}
+export function handleWithdrawedHouse(event: WithdrawedHouse): void { }

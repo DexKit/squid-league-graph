@@ -18,7 +18,7 @@ type Game @entity {
   createdAt: BigInt
   startedAt: BigInt
   startsAt: BigInt
-  pastRoundChallengeResult: Boolean
+  pastRoundChallengeResult: Int
   currentRoundTotalPlayers: BigInt!
   currentRoundSetupAt: BigInt
   currentRoundStartsAt: BigInt
@@ -35,7 +35,7 @@ type Game @entity {
 
 type Player @entity {
   id: ID!
-  playCurrentRound: Boolean
+  playCurrentRound: Int
   totalFinishedGames: BigInt!
   totalJoinedGames: BigInt!
   games: [PlayerGame!] @derivedFrom(field: "player")

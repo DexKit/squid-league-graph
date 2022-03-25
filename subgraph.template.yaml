@@ -19,6 +19,8 @@ dataSources:
       abis:
         - name: SquidGameFactory
           file: ./abis/SquidGameFactory.json
+        - name: SquidGame
+          file: ./abis/SquidGame.json
       eventHandlers:
         - event: OwnershipTransferred(indexed address,indexed address)
           handler: handleOwnershipTransferred
@@ -45,11 +47,11 @@ templates:
       eventHandlers:
         - event: PlayerJoined(address,uint256)
           handler: handlePlayerJoinedGame
-        - event: PlayerJoinedRound(uint256,address,uint256,bool)
+        - event: PlayerJoinedRound(uint256,address,uint256,uint8)
           handler: handlePlayerJoinedRound
         - event: ChallengeStarted(uint256,int256,uint256)
           handler: handleChallengeStarted
-        - event: ChallengeFinished(uint256,int256,uint256,bool)
+        - event: ChallengeFinished(uint256,int256,uint256,uint8)
           handler: handleChallengeFinished
         - event: ChallengeSetup(uint256,address,uint256)
           handler: handleChallengeSetup
